@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReportGenerator.Models;
+using ReportGenerator.Views;
+using ReportGenerator.Presenters;
+using ReportGenerator._Repositories;
+using System.Configuration;
 
 namespace ReportGenerator
 {
@@ -16,7 +21,11 @@ namespace ReportGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            string sqlConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            IActivityView view = new ActivityView();
+            IActivityRepository repository = new ActivityRepository(sqlConnectionString);
+            new ActivityPresenter(view,repository);
+            Application.Run((Form)view);
         }
     }
 }
