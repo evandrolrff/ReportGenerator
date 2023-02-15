@@ -22,22 +22,18 @@ namespace ReportGenerator.Models
         public int Id { get => id; set => id = value; }
 
         [DisplayName("Activity Name")]
-        [Required(ErrorMessage = "Name is required")]
-        [StringLength(255, MinimumLength=10, ErrorMessage ="Name must be at least 10 characters")]
+        [Required(ErrorMessage = "Campo Nome é requerido")]
         public string Name { get => name; set => name = value; }
         
         [DisplayName("Activity Description")]
-        [Required(ErrorMessage = "Description is required")]
-        [StringLength(255, MinimumLength = 10, ErrorMessage = "Description must be at least 10 characters")]
+        [Required(ErrorMessage = "Campo Descrição é requerido")]
         public string Description { get => description; set => description = value; }
 
         [DisplayName("Activity Type")]
-        [StringLength(255, MinimumLength = 10, ErrorMessage = "Type must be at least 10 characters")]
         public string Type { get => type; set => type = value; }
 
         [DisplayName("Activity DescriptionURL")]
-        [Required(ErrorMessage = "DescriptionURL is required")]
-        [StringLength(255, MinimumLength = 10, ErrorMessage = "DescriptionURL must be at least 10 characters")]
+        [Required(ErrorMessage = "Campo DescriçãoURL é requerido")]
         public string DescriptionURL { get => descriptionURL; set => descriptionURL = value; }
     }
 }
