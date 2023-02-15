@@ -8,6 +8,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ReportGenerator.Views
 {
@@ -28,6 +29,7 @@ namespace ReportGenerator.Views
 
         private void AssociateAndRaiseViewEvents()
         {
+            // Search
             btnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
             txtBoxSearch.KeyDown += (s, e) =>
             {
@@ -37,7 +39,52 @@ namespace ReportGenerator.Views
                 }
             };
 
-            //Others
+            // Add new
+            btnAdd.Click += delegate 
+            { 
+                AddNewEvent?.Invoke(this, EventArgs.Empty); 
+                tabControl.TabPages.Remove(tabPage1);
+                tabControl.TabPages.Add(tabPage2);
+                tabPage2.Text = "Adicione nova atividade";
+            };
+            // Edit
+            btnEdit.Click += delegate 
+            { 
+                EditEvent?.Invoke(this, EventArgs.Empty);
+                tabControl.TabPages.Remove(tabPage1);
+                tabControl.TabPages.Add(tabPage2);
+                tabPage2.Text = "Edite a atividade";
+            };
+            // Save
+            btnSave.Click += delegate 
+            { 
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+                if (IsSuccessful)
+                {
+                    tabControl.TabPages.Remove(tabPage1);
+                    tabControl.TabPages.Add(tabPage2);
+                }
+                MessageBox.Show(Message);
+            };
+            // Cancel
+            btnCancel.Click += delegate 
+            { 
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                tabControl.TabPages.Remove(tabPage1);
+                tabControl.TabPages.Add(tabPage2);
+            };
+            // Delete
+            btnDelete.Click += delegate 
+            { 
+                DeleteEvent?.Invoke(this, EventArgs.Empty);
+                var result = MessageBox.Show("Você têm certeza que deseja excluir a atividade?", "Warning",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };
         }
 
         //Properties
@@ -99,6 +146,32 @@ namespace ReportGenerator.Views
         public void SetActivityBindingSource(BindingSource activityList)
         {
             dataGridView1.DataSource = activityList;
+        }
+
+        //Methods
+        public void SetPetListBindingSource(BindingSource petList)
+        {
+            dataGridView1.DataSource = petList;
+        }
+
+        //Singleton pattern (Open a single form instance)
+        private static ActivityView instance;
+        public static ActivityView GetInstace(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new ActivityView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
         }
     }
 }

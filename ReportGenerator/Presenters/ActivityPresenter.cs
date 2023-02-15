@@ -51,27 +51,81 @@ namespace ReportGenerator.Presenters
 
         private void CancelAction(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
         }
 
         private void SaveActivity(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var model = new ActivityModel();
+            model.Id = Convert.ToInt32(view.ActivityId);
+            model.Name = view.ActivityName;
+            model.Description = view.ActivityDescription;
+            model.Type = view.ActivityType;
+            model.DescriptionURL = view.ActivityDescriptionURL;
+            try
+            {
+                new Common.ModelDataValidation().Validate(model);
+                if (view.IsEdit) //edit model
+                {
+                    repository.Edit(model);
+                    view.Message = "Atividade editada com sucesso";
+                } 
+                else //add new model
+                {
+                    repository.Add(model);
+                    view.Message = "Atividade adicionada com sucesso";
+                }
+                view.IsSuccessful = true;
+                LoadAllActivityList();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message= ex.Message;
+            }
+        }
+
+        private void CleanViewFields()
+        {
+            view.ActivityId = "0";
+            view.ActivityName = "";
+            view.ActivityDescription = "";
+            view.ActivityType = "";
+            view.ActivityDescriptionURL = "";
         }
 
         private void DeleteSelectedActivity(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var activity =  (ActivityModel)activitiesBindingSource.Current;
+                repository.Delete(activity.Id);
+                view.IsSuccessful = true;
+                view.Message = "Atividade excluída sucedidamente";
+                LoadAllActivityList();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message= "Um erro ocorreu, a atividade não pode ser excluída.";
+            }
         }
 
         private void LoadSelectedActivityToEdit(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var activity = (ActivityModel)activitiesBindingSource.Current;
+            view.ActivityId = activity.Id.ToString();
+            view.ActivityName = activity.Name;
+            view.ActivityDescription = activity.Description;
+            view.ActivityType = activity.Type;
+            view.ActivityDescriptionURL = activity.DescriptionURL;
+            view.IsEdit = true;
         }
 
         private void AddNewActivity(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
         }
 
         private void SearchActivity(object sender, EventArgs e)

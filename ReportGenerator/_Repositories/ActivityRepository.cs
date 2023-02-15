@@ -21,17 +21,51 @@ namespace ReportGenerator._Repositories
         //Method
         public void Add(ActivityModel actModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SQLiteConnection(connectionString))
+            using (var command = new SQLiteCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Insert into Activity values (@id, @name, @description, @typeActivity, @descriptionURL)";
+                command.Parameters.Add("@id", DbType.Int32).Value = actModel.Id;
+                command.Parameters.Add("@name", DbType.String).Value = actModel.Name;
+                command.Parameters.Add("@description", DbType.String).Value = actModel.Description;
+                command.Parameters.Add("@typeActivity", DbType.String).Value = actModel.Type;
+                command.Parameters.Add("@descriptionURL", DbType.String).Value = actModel.DescriptionURL;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SQLiteConnection(connectionString))
+            using (var command = new SQLiteCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "Delete from Activity where id = @id";
+                command.Parameters.Add("@id", DbType.Int32).Value = id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Edit(ActivityModel actModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SQLiteConnection(connectionString))
+            using (var command = new SQLiteCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"Update Activity 
+                                        set name = @name, description = @description, typeActivity = @typeActivity,
+                                        descriptionURL = @descriptionURL where id = @id";
+                command.Parameters.Add("@name", DbType.String).Value = actModel.Name;
+                command.Parameters.Add("@description", DbType.String).Value = actModel.Description;
+                command.Parameters.Add("@typeActivity", DbType.String).Value = actModel.Type;
+                command.Parameters.Add("@descriptionURL", DbType.String).Value = actModel.DescriptionURL;
+                command.Parameters.Add("@id", DbType.Int32).Value = actModel.Id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<ActivityModel> GetAll()
@@ -48,11 +82,11 @@ namespace ReportGenerator._Repositories
                     while(reader.Read())
                     {
                         var actModel = new ActivityModel();
-                        actModel.Id = (int)reader["ID"];
-                        actModel.Name = reader["Name"].ToString();
-                        actModel.Description = reader["Description"].ToString();
-                        actModel.Type = reader["Type"].ToString();
-                        actModel.DescriptionURL = reader["Description"].ToString();
+                        actModel.Id = Convert.ToInt32(reader["id"]);
+                        actModel.Name = reader["name"].ToString();
+                        actModel.Description = reader["description"].ToString();
+                        actModel.Type = reader["typeActivity"].ToString();
+                        actModel.DescriptionURL = reader["descriptionURL"].ToString();
                         activityList.Add(actModel);
                     }
                 }
@@ -63,7 +97,7 @@ namespace ReportGenerator._Repositories
         public IEnumerable<ActivityModel> GetByValue(string value)
         {
             var activityList = new List<ActivityModel>();
-            UInt64 id = int.TryParse(value, out _) ? Convert.ToUInt64(value) : 0;
+            int id = int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
             string name = value;
 
             using (var connection = new SQLiteConnection(connectionString))
@@ -82,11 +116,11 @@ namespace ReportGenerator._Repositories
                     while (reader.Read())
                     {
                         var actModel = new ActivityModel();
-                        actModel.Id = (int)reader["ID"];
-                        actModel.Name = reader["Name"].ToString();
-                        actModel.Description = reader["Description"].ToString();
-                        actModel.Type = reader["Type"].ToString();
-                        actModel.DescriptionURL = reader["Description"].ToString();
+                        actModel.Id = Convert.ToInt32(reader["id"]);
+                        actModel.Name = reader["name"].ToString();
+                        actModel.Description = reader["description"].ToString();
+                        actModel.Type = reader["typeActivity"].ToString();
+                        actModel.DescriptionURL = reader["descriptionURL"].ToString();
                         activityList.Add(actModel);
                     }
                 }

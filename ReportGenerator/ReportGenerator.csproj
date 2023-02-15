@@ -69,6 +69,7 @@
     <Compile Include="Models\ActivityModel.cs" />
     <Compile Include="Models\IActivityRepository.cs" />
     <Compile Include="Presenters\ActivityPresenter.cs" />
+    <Compile Include="Presenters\Common\ModelDataValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ActivityView.cs">
