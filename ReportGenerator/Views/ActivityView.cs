@@ -61,8 +61,8 @@ namespace ReportGenerator.Views
                 SaveEvent?.Invoke(this, EventArgs.Empty);
                 if (isSuccessful)
                 {
-                    tabControl.TabPages.Remove(tabListActivity);
-                    tabControl.TabPages.Add(tabDetailActivity);
+                    tabControl.TabPages.Remove(tabDetailActivity); 
+                    tabControl.TabPages.Add(tabListActivity); 
                 }
                 MessageBox.Show(Message);
             };
@@ -70,8 +70,8 @@ namespace ReportGenerator.Views
             btnCancel.Click += delegate 
             { 
                 CancelEvent?.Invoke(this, EventArgs.Empty);
-                tabControl.TabPages.Remove(tabListActivity);
-                tabControl.TabPages.Add(tabDetailActivity);
+                tabControl.TabPages.Remove(tabDetailActivity);
+                tabControl.TabPages.Add(tabListActivity);
             };
             // Delete
             btnDelete.Click += delegate 
