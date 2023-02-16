@@ -31,15 +31,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabListActivity = new System.Windows.Forms.TabPage();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabDetailActivity = new System.Windows.Forms.TabPage();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtBoxTipo = new System.Windows.Forms.TextBox();
@@ -54,9 +54,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabListActivity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.tabDetailActivity.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -76,40 +76,40 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(706, 66);
+            this.panel1.Size = new System.Drawing.Size(684, 66);
             this.panel1.TabIndex = 1;
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabListActivity);
+            this.tabControl.Controls.Add(this.tabDetailActivity);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 66);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(706, 295);
+            this.tabControl.Size = new System.Drawing.Size(684, 295);
             this.tabControl.TabIndex = 2;
             // 
-            // tabPage1
+            // tabListActivity
             // 
-            this.tabPage1.Controls.Add(this.btnDelete);
-            this.tabPage1.Controls.Add(this.btnEdit);
-            this.tabPage1.Controls.Add(this.btnAdd);
-            this.tabPage1.Controls.Add(this.btnSearch);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Controls.Add(this.txtBoxSearch);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(698, 269);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Lista de atividades";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabListActivity.Controls.Add(this.btnDelete);
+            this.tabListActivity.Controls.Add(this.btnEdit);
+            this.tabListActivity.Controls.Add(this.btnAdd);
+            this.tabListActivity.Controls.Add(this.btnSearch);
+            this.tabListActivity.Controls.Add(this.dataGridView);
+            this.tabListActivity.Controls.Add(this.txtBoxSearch);
+            this.tabListActivity.Controls.Add(this.label6);
+            this.tabListActivity.Location = new System.Drawing.Point(4, 22);
+            this.tabListActivity.Name = "tabListActivity";
+            this.tabListActivity.Padding = new System.Windows.Forms.Padding(3);
+            this.tabListActivity.Size = new System.Drawing.Size(676, 269);
+            this.tabListActivity.TabIndex = 0;
+            this.tabListActivity.Text = "Lista de atividades";
+            this.tabListActivity.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(612, 119);
+            this.btnDelete.Location = new System.Drawing.Point(592, 118);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 6;
@@ -118,7 +118,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(612, 90);
+            this.btnEdit.Location = new System.Drawing.Point(592, 89);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 5;
@@ -127,7 +127,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(612, 60);
+            this.btnAdd.Location = new System.Drawing.Point(592, 60);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 4;
@@ -143,13 +143,19 @@
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 60);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(566, 201);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(20, 60);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(566, 201);
+            this.dataGridView.TabIndex = 2;
             // 
             // txtBoxSearch
             // 
@@ -167,27 +173,27 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Busca";
             // 
-            // tabPage2
+            // tabDetailActivity
             // 
-            this.tabPage2.Controls.Add(this.btnCancel);
-            this.tabPage2.Controls.Add(this.btnSave);
-            this.tabPage2.Controls.Add(this.txtBoxTipo);
-            this.tabPage2.Controls.Add(this.txtBoxDescriptionURL);
-            this.tabPage2.Controls.Add(this.txtBoxDescription);
-            this.tabPage2.Controls.Add(this.txtBoxName);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.txtBoxID);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(698, 269);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Detalhes da atividade";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabDetailActivity.Controls.Add(this.btnCancel);
+            this.tabDetailActivity.Controls.Add(this.btnSave);
+            this.tabDetailActivity.Controls.Add(this.txtBoxTipo);
+            this.tabDetailActivity.Controls.Add(this.txtBoxDescriptionURL);
+            this.tabDetailActivity.Controls.Add(this.txtBoxDescription);
+            this.tabDetailActivity.Controls.Add(this.txtBoxName);
+            this.tabDetailActivity.Controls.Add(this.label7);
+            this.tabDetailActivity.Controls.Add(this.label5);
+            this.tabDetailActivity.Controls.Add(this.label4);
+            this.tabDetailActivity.Controls.Add(this.label3);
+            this.tabDetailActivity.Controls.Add(this.txtBoxID);
+            this.tabDetailActivity.Controls.Add(this.label2);
+            this.tabDetailActivity.Location = new System.Drawing.Point(4, 22);
+            this.tabDetailActivity.Name = "tabDetailActivity";
+            this.tabDetailActivity.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDetailActivity.Size = new System.Drawing.Size(676, 269);
+            this.tabDetailActivity.TabIndex = 1;
+            this.tabDetailActivity.Text = "Detalhes da atividade";
+            this.tabDetailActivity.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
@@ -211,28 +217,28 @@
             // 
             this.txtBoxTipo.Location = new System.Drawing.Point(301, 105);
             this.txtBoxTipo.Name = "txtBoxTipo";
-            this.txtBoxTipo.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxTipo.Size = new System.Drawing.Size(194, 20);
             this.txtBoxTipo.TabIndex = 11;
             // 
             // txtBoxDescriptionURL
             // 
             this.txtBoxDescriptionURL.Location = new System.Drawing.Point(301, 168);
             this.txtBoxDescriptionURL.Name = "txtBoxDescriptionURL";
-            this.txtBoxDescriptionURL.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxDescriptionURL.Size = new System.Drawing.Size(194, 20);
             this.txtBoxDescriptionURL.TabIndex = 9;
             // 
             // txtBoxDescription
             // 
             this.txtBoxDescription.Location = new System.Drawing.Point(41, 168);
             this.txtBoxDescription.Name = "txtBoxDescription";
-            this.txtBoxDescription.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxDescription.Size = new System.Drawing.Size(194, 20);
             this.txtBoxDescription.TabIndex = 8;
             // 
             // txtBoxName
             // 
             this.txtBoxName.Location = new System.Drawing.Point(41, 105);
             this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxName.Size = new System.Drawing.Size(194, 20);
             this.txtBoxName.TabIndex = 7;
             // 
             // label7
@@ -275,8 +281,10 @@
             // 
             this.txtBoxID.Location = new System.Drawing.Point(38, 37);
             this.txtBoxID.Name = "txtBoxID";
-            this.txtBoxID.Size = new System.Drawing.Size(78, 20);
-            this.txtBoxID.TabIndex = 1;
+            this.txtBoxID.ReadOnly = true;
+            this.txtBoxID.Size = new System.Drawing.Size(154, 20);
+            this.txtBoxID.TabIndex = 6;
+            this.txtBoxID.Text = "0";
             // 
             // label2
             // 
@@ -291,7 +299,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 361);
+            this.ClientSize = new System.Drawing.Size(684, 361);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -301,11 +309,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabListActivity.ResumeLayout(false);
+            this.tabListActivity.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.tabDetailActivity.ResumeLayout(false);
+            this.tabDetailActivity.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -315,8 +323,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabListActivity;
+        private System.Windows.Forms.TabPage tabDetailActivity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
@@ -329,7 +337,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBoxID;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSearch;

@@ -27,7 +27,7 @@ namespace ReportGenerator._Repositories
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "Insert into Activity values (@id, @name, @description, @typeActivity, @descriptionURL)";
-                command.Parameters.Add("@id", DbType.Int32).Value = actModel.Id;
+                command.Parameters.Add("@id", DbType.Int32).Value = null;
                 command.Parameters.Add("@name", DbType.String).Value = actModel.Name;
                 command.Parameters.Add("@description", DbType.String).Value = actModel.Description;
                 command.Parameters.Add("@typeActivity", DbType.String).Value = actModel.Type;

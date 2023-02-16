@@ -26,6 +26,7 @@ namespace ReportGenerator.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data source=.\\ReportGeneratorDB.db;Version=3")]
         public string SqlConnection {
             get {
                 return ((string)(this["SqlConnection"]));

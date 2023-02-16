@@ -21,8 +21,8 @@ namespace ReportGenerator.Presenters.Common
                 foreach (var item in results) 
                 {
                     errorMessage += "- " + item.ErrorMessage + "\n";
-                    throw new Exception(errorMessage);
                 }
+                throw new Exception(errorMessage);
             }
         }
     }

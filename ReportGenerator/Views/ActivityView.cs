@@ -24,7 +24,7 @@ namespace ReportGenerator.Views
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
-            tabControl.TabPages.Remove(tabPage2);
+            tabControl.TabPages.Remove(tabDetailActivity);
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -43,26 +43,26 @@ namespace ReportGenerator.Views
             btnAdd.Click += delegate 
             { 
                 AddNewEvent?.Invoke(this, EventArgs.Empty); 
-                tabControl.TabPages.Remove(tabPage1);
-                tabControl.TabPages.Add(tabPage2);
-                tabPage2.Text = "Adicione nova atividade";
+                tabControl.TabPages.Remove(tabListActivity);
+                tabControl.TabPages.Add(tabDetailActivity);
+                tabDetailActivity.Text = "Adicione nova atividade";
             };
             // Edit
             btnEdit.Click += delegate 
             { 
                 EditEvent?.Invoke(this, EventArgs.Empty);
-                tabControl.TabPages.Remove(tabPage1);
-                tabControl.TabPages.Add(tabPage2);
-                tabPage2.Text = "Edite a atividade";
+                tabControl.TabPages.Remove(tabListActivity);
+                tabControl.TabPages.Add(tabDetailActivity);
+                tabDetailActivity.Text = "Edite a atividade";
             };
             // Save
             btnSave.Click += delegate 
             { 
                 SaveEvent?.Invoke(this, EventArgs.Empty);
-                if (IsSuccessful)
+                if (isSuccessful)
                 {
-                    tabControl.TabPages.Remove(tabPage1);
-                    tabControl.TabPages.Add(tabPage2);
+                    tabControl.TabPages.Remove(tabListActivity);
+                    tabControl.TabPages.Add(tabDetailActivity);
                 }
                 MessageBox.Show(Message);
             };
@@ -70,13 +70,12 @@ namespace ReportGenerator.Views
             btnCancel.Click += delegate 
             { 
                 CancelEvent?.Invoke(this, EventArgs.Empty);
-                tabControl.TabPages.Remove(tabPage1);
-                tabControl.TabPages.Add(tabPage2);
+                tabControl.TabPages.Remove(tabListActivity);
+                tabControl.TabPages.Add(tabDetailActivity);
             };
             // Delete
             btnDelete.Click += delegate 
             { 
-                DeleteEvent?.Invoke(this, EventArgs.Empty);
                 var result = MessageBox.Show("Você têm certeza que deseja excluir a atividade?", "Warning",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
@@ -145,13 +144,7 @@ namespace ReportGenerator.Views
         // Methods
         public void SetActivityBindingSource(BindingSource activityList)
         {
-            dataGridView1.DataSource = activityList;
-        }
-
-        //Methods
-        public void SetPetListBindingSource(BindingSource petList)
-        {
-            dataGridView1.DataSource = petList;
+            dataGridView.DataSource = activityList;
         }
 
         //Singleton pattern (Open a single form instance)
